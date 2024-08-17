@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  min-height: 60vh;
+}
+
+.input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  min-height: 40vh;
+  resize: none;
+}
+
+.fileInputWrapper {
+  position: relative;
+  margin-bottom: 15px;
+  border: 2px dashed #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fileInput {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.fileInputWrapper.dragging {
+  background-color: #f0f0f0;
+  border-color: #007bff;
+}
+
+.fileButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}

@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+  color: #333;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.message {
+  margin-top: 15px;
+  text-align: center;
+  color: black;
+}
+
+.signupLink,
+.signinLink {
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.signupLink a,
+.signinLink a {
+  color: #03A9F4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signupLink a:hover,
+.signinLink a:hover {
+  text-decoration: underline;
+}

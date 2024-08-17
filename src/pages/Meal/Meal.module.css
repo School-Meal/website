@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  min-height: 100vh;
+}
+
+.header {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mealBoxContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.mealBox {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.mealBox:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.mealType {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #4a4a4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mealType::before {
+  content: attr(data-emoji);
+  font-size: 32px;
+  margin-right: 10px;
+}
+
+.menuItem {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.menuItem:hover {
+  color: #3498db;
+}
+
+.noMealMessage,
+.loading,
+.error {
+  font-size: 24px;
+  color: #888;
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .mealBoxContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mealBox {
+    width: 80%;
+  }
+}

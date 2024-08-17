@@ -1,0 +1,106 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.post {
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 5%;
+}
+
+.post:hover .image {
+  transform: scale(1.05);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.noImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  color: #aaa;
+  font-size: 1.2em;
+}
+
+.title {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #333;
+  padding: 5px;
+}
+
+.content {
+  font-size: 1em;
+  margin-bottom: 5px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.likeCount {
+  font-size: 1.2em;
+  margin: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.searchInput {
+  width: 400px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.noResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 1.5em;
+  color: #666;
+}

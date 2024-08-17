@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.header {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
