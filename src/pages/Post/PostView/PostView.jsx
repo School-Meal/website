@@ -4,6 +4,7 @@ import usePost from "../../../hooks/usePost";
 import useLike from "../../../hooks/useLike";
 import Button from "../../../components/Button/Button";
 import styles from "./PostView.module.css";
+import basicProfile from "../../../assets/images/basic-profile.png";
 
 const PostView = () => {
   const { posts, fetchPosts, loading, error } = usePost();
@@ -62,12 +63,36 @@ const PostItem = ({ post }) => {
               className={styles.image}
             />
           ) : (
-            <div className={styles.noImage}>No Image</div>
+            <img
+              className={styles.profileImage}
+              src={basicProfile}
+              alt="Basic Profile"
+            />
           )}
         </div>
-        <h2 className={styles.title}>{post.title}</h2>
-        <p className={styles.content}>{post.content.substring(0, 100)}</p>
-        <div className={styles.likeCount}>💙 {likeCount}</div>
+        <div className={styles.postContent}>
+          <h2 className={styles.title}>{post.title}</h2>
+          <p className={styles.content}>{post.content.substring(0, 8)}...</p>
+          <div className={styles.postFooter}>
+            <div className={styles.authorInfo}>
+              <img
+                src={post.author.imageUri || basicProfile}
+                alt={post.author.nickName}
+                className={styles.authorImage}
+              />
+              <div className={styles.authorDetails}>
+                <p className={styles.authorName}>
+                  {post.author.nickName || "사용자"}
+                </p>
+                <p className={styles.authorSchool}>{post.author.schoolName}</p>
+              </div>
+            </div>
+            <div className={styles.likeCount}>
+              <span className={styles.heartIcon}>💙</span>
+              {likeCount}
+            </div>
+          </div>
+        </div>
       </Link>
     </div>
   );

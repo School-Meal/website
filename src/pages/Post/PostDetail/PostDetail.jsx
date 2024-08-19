@@ -3,7 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import usePost from "../../../hooks/usePost";
 import useLike from "../../../hooks/useLike";
 import useAuth from "../../../hooks/useAuth";
+import useComment from "../../../hooks/useComment";
 import Modal from "../../../components/Modal/Modal";
+import Comment from "../../../components/Comment/Comment";
 import styles from "./PostDetail.module.css";
 
 const PostDetail = () => {
@@ -14,10 +16,19 @@ const PostDetail = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [newComment, setNewComment] = useState("");
+  const {
+    comments,
+    fetchComments,
+    createComment,
+    updateComment,
+    deleteComment,
+  } = useComment(id);
 
   const loadPost = useCallback(async () => {
     await fetchPost(id);
-  }, [id, fetchPost]);
+    await fetchComments();
+  }, [id, fetchPost, fetchComments]);
 
   useEffect(() => {
     loadPost();
@@ -43,6 +54,24 @@ const PostDetail = () => {
   const handleConfirmDelete = async () => {
     await handleDelete();
     setShowModal(false);
+  };
+
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    await createComment({ content: newComment });
+    setNewComment("");
+  };
+
+  const handleCommentReply = async (parentId, content) => {
+    await createComment({ content, parentCommentId: parentId });
+  };
+
+  const handleCommentEdit = async (commentId, content) => {
+    await updateComment(commentId, { content });
+  };
+
+  const handleCommentDelete = async (commentId) => {
+    await deleteComment(commentId);
   };
 
   if (loading) return <p>로딩 중...</p>;
@@ -89,6 +118,32 @@ const PostDetail = () => {
         onConfirm={handleConfirmDelete}
         message="게시글을 정말로 삭제하시겠습니까?"
       />
+      <div className={styles.commentSection}>
+        <form onSubmit={handleCommentSubmit} className={styles.commentForm}>
+          <input
+            type="text"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="댓글을 입력하세요..."
+            className={styles.commentInput}
+          />
+          <button type="submit" className={styles.commentButton}>
+            등록
+          </button>
+        </form>
+        <div className={styles.comments}>
+          {comments.map((comment) => (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              onReply={handleCommentReply}
+              onEdit={handleCommentEdit}
+              onDelete={handleCommentDelete}
+              currentUserId={user?.id}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

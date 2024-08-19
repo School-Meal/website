@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import Button from "../../../../components/Button/Button";
 import styles from "./ProfileEdit.module.css";
+import basicProfile from "../../../../assets/images/basic-profile.png";
 
 function ProfileEdit() {
   const { user, updateProfile, message, fetchUserProfile } = useAuth();
@@ -81,7 +82,11 @@ function ProfileEdit() {
               alt="Profile"
             />
           ) : (
-            <div className={styles.noImage}>No Image</div>
+            <img
+              className={styles.profileImage}
+              src={basicProfile}
+              alt="Basic Profile"
+            />
           )}
         </div>
         <form onSubmit={handleSubmit} className={styles.form}>

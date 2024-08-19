@@ -101,6 +101,7 @@ const PostCreate = () => {
           onChange={handleFileChange}
           className={styles.fileInput}
           accept="image/*"
+          required
         />
         <div className={styles.fileButton}>
           <img src={upload} alt="Upload" className={styles.uploadIcon} />

@@ -106,3 +106,35 @@
   text-align: center;
   margin-top: 20px;
 }
+
+.commentSection {
+  margin-top: 30px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.commentForm {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.commentInput {
+  flex-grow: 1;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.commentButton {
+  background-color: #03c75a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.comments {
+  margin-top: 20px;
+}

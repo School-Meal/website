@@ -35,6 +35,9 @@ function TopNav({ isLoggedIn, setIsLoggedIn }) {
             <Link to="/posts" className={styles.Link}>
               커뮤니티
             </Link>
+            <Link to="/ranking" className={styles.Link}>
+              이달의 급식
+            </Link>
             <Link to="/profile" className={styles.Link}>
               프로필
             </Link>

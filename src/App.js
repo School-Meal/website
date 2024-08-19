@@ -14,6 +14,7 @@ import PostView from "./pages/Post/PostView/PostView";
 import PostCreate from "./pages/Post/PostCreate/PostCreate";
 import PostEdit from "./pages/Post/PostEdit/PostEdit";
 import PostDetail from "./pages/Post/PostDetail/PostDetail";
+import Ranking from "./pages/Ranking/Ranking";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -88,6 +89,14 @@ function App() {
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <PostEdit />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ranking"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Ranking />
             </ProtectedRoute>
           }
         />
