@@ -140,6 +140,7 @@ const PostDetail = () => {
             onKeyPress={handleKeyPress}
             placeholder="댓글을 입력하세요..."
             className={styles.commentInput}
+            required
           />
           <button type="submit" className={styles.commentButton}>
             등록

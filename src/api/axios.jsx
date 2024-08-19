@@ -4,21 +4,7 @@ const axiosInstance = axios.create({
   baseURL: "http://localhost:80",
 });
 
-// 요청 인터셉터
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("accessToken");
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
-// 응답 인터셉터
+// 응답 인터셉터 부분
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
@@ -39,9 +25,11 @@ axiosInstance.interceptors.response.use(
             },
           });
 
-          const { accessToken } = response.data;
+          const { accessToken, refreshToken: newRefreshToken } = response.data;
 
           localStorage.setItem("accessToken", accessToken); // 새로운 액세스 토큰 저장
+          localStorage.setItem("refreshToken", newRefreshToken); // 새로운 리프레시 토큰 저장
+
           axiosInstance.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${accessToken}`;

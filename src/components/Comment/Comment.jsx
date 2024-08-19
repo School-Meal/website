@@ -55,6 +55,7 @@ function Comment({
             onChange={(e) => setEditedContent(e.target.value)}
             onKeyPress={(e) => handleKeyPress(e, "edit")}
             className={styles.editInput}
+            required
           />
           <button onClick={handleEdit} className={styles.button}>
             저장
@@ -100,6 +101,7 @@ function Comment({
             onKeyPress={(e) => handleKeyPress(e, "reply")}
             placeholder="답글을 입력하세요."
             className={styles.replyInput}
+            required
           />
           <button onClick={handleReply} className={styles.button}>
             답글 작성

@@ -158,7 +158,7 @@
 }
 
 .commentButton {
-  background-color: #03c75a;
+  background-color: #03A9F4;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -170,7 +170,7 @@
 }
 
 .commentButton:hover {
-  background-color: #02a64b;
+  background-color: #0b8ecb;
 }
 
 .comments {
