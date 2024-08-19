@@ -38,6 +38,7 @@ axiosInstance.interceptors.response.use(
               Authorization: `Bearer ${refreshToken}`,
             },
           });
+
           const { accessToken } = response.data;
 
           localStorage.setItem("accessToken", accessToken); // 새로운 액세스 토큰 저장

@@ -46,7 +46,9 @@ function Ranking() {
               <h3>{post.title}</h3>
               <p>{post.content.substring(0, 8)}...</p>
             </div>
-            <span className={styles.likeCount}>좋아요: {post.likeCount}</span>
+            <span className={styles.likeCount}>
+              <strong>좋아요: {post.likeCount}</strong>
+            </span>
           </div>
         ))}
       </div>

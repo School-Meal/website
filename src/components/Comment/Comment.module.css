@@ -28,6 +28,9 @@ textarea {
 .content {
   margin-bottom: 5px;
   color: #333;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .actions {
@@ -60,6 +63,9 @@ textarea {
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 10px;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .comment .comment {

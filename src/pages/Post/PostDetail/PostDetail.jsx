@@ -58,20 +58,33 @@ const PostDetail = () => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    await createComment({ content: newComment });
-    setNewComment("");
+    if (newComment.trim()) {
+      await createComment({ content: newComment });
+      setNewComment("");
+      await fetchComments(); // 댓글 목록을 다시 불러옵니다.
+    }
   };
 
   const handleCommentReply = async (parentId, content) => {
     await createComment({ content, parentCommentId: parentId });
+    await fetchComments(); // 댓글 목록을 다시 불러옵니다.
   };
 
   const handleCommentEdit = async (commentId, content) => {
     await updateComment(commentId, { content });
+    await fetchComments(); // 댓글 목록을 다시 불러옵니다.
   };
 
   const handleCommentDelete = async (commentId) => {
     await deleteComment(commentId);
+    await fetchComments(); // 댓글 목록을 다시 불러옵니다.
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleCommentSubmit(e);
+    }
   };
 
   if (loading) return <p>로딩 중...</p>;
@@ -124,6 +137,7 @@ const PostDetail = () => {
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
+            onKeyPress={handleKeyPress}
             placeholder="댓글을 입력하세요..."
             className={styles.commentInput}
           />

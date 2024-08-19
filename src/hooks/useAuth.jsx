@@ -12,7 +12,6 @@ const useAuth = () => {
       const response = await axiosInstance.get("/auth/me");
       setUser(response.data);
     } catch (error) {
-      console.error("Failed to fetch user profile", error);
       setMessage("사용자 프로필을 가져오는데 실패했습니다.");
     }
   };
@@ -34,9 +33,11 @@ const useAuth = () => {
       setMessage(response.data.message);
       setIsLoggedIn(true);
       fetchUserProfile();
-      setTimeout(() => navigate("/"), 1000);
+      setTimeout(() => {
+        setMessage("");
+        navigate("/");
+      }, 1000);
     } catch (error) {
-      console.error("Signin failed", error);
       setMessage("이메일 또는 비밀번호가 일치하지 않습니다.");
     }
   };
@@ -50,9 +51,11 @@ const useAuth = () => {
         nickName,
       });
       setMessage(response.data.message);
-      setTimeout(() => navigate("/signin"), 1000);
+      setTimeout(() => {
+        setMessage("");
+        navigate("/signin");
+      }, 1000);
     } catch (error) {
-      console.error("Signup failed", error);
       setMessage("이미 존재하는 이메일입니다.");
     }
   };
@@ -64,11 +67,13 @@ const useAuth = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      setUser(response.data); // 수정된 프로필 데이터로 사용자 상태 업데이트
+      setUser(response.data);
       setMessage("프로필이 성공적으로 업데이트되었습니다.");
-      setTimeout(() => navigate("/profile"), 1000);
+      setTimeout(() => {
+        setMessage("");
+        navigate("/profile");
+      }, 1000);
     } catch (error) {
-      console.error("Profile update failed", error);
       setMessage("프로필 업데이트에 실패했습니다. 다시 시도해주세요.");
     }
   };
@@ -79,9 +84,12 @@ const useAuth = () => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       setUser(null);
-      navigate("/signin");
+      setMessage("로그아웃되었습니다.");
+      setTimeout(() => {
+        setMessage("");
+        navigate("/signin");
+      }, 1000);
     } catch (error) {
-      console.error("Logout failed", error);
       setMessage("로그아웃에 실패했습니다. 다시 시도해주세요.");
     }
   };
@@ -92,9 +100,12 @@ const useAuth = () => {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");
       setUser(null);
-      navigate("/signin");
+      setMessage("계정이 성공적으로 삭제되었습니다.");
+      setTimeout(() => {
+        setMessage("");
+        navigate("/signin");
+      }, 1000);
     } catch (error) {
-      console.error("Account deletion failed", error);
       setMessage("계정 삭제에 실패했습니다. 다시 시도해주세요.");
     }
   };

@@ -50,8 +50,15 @@
 }
 
 .medal {
-  font-size: 36px;
+  font-size: 48px;
   margin-bottom: 10px;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.podiumItem:hover .medal {
+  transform: scale(1.2);
 }
 
 .podiumItem h3 {
@@ -88,7 +95,7 @@
 }
 
 .listItem:hover {
-  background-color: #f2f1f1;
+  background-color: #E1F5FE;
 }
 
 .rank {

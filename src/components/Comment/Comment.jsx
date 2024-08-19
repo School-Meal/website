@@ -20,9 +20,22 @@ function Comment({
   };
 
   const handleReply = () => {
-    onReply(comment.id, replyContent);
-    setShowReplyForm(false);
-    setReplyContent("");
+    if (replyContent.trim()) {
+      onReply(comment.id, replyContent);
+      setShowReplyForm(false);
+      setReplyContent("");
+    }
+  };
+
+  const handleKeyPress = (e, action) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (action === "edit") {
+        handleEdit();
+      } else if (action === "reply") {
+        handleReply();
+      }
+    }
   };
 
   return (
@@ -40,6 +53,7 @@ function Comment({
           <textarea
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}
+            onKeyPress={(e) => handleKeyPress(e, "edit")}
             className={styles.editInput}
           />
           <button onClick={handleEdit} className={styles.button}>
@@ -83,6 +97,7 @@ function Comment({
           <textarea
             value={replyContent}
             onChange={(e) => setReplyContent(e.target.value)}
+            onKeyPress={(e) => handleKeyPress(e, "reply")}
             placeholder="답글을 입력하세요."
             className={styles.replyInput}
           />

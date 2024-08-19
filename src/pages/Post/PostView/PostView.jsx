@@ -13,7 +13,7 @@ const PostView = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -72,7 +72,7 @@ const PostItem = ({ post }) => {
         </div>
         <div className={styles.postContent}>
           <h2 className={styles.title}>{post.title}</h2>
-          <p className={styles.content}>{post.content.substring(0, 8)}...</p>
+          <p className={styles.content}>{post.content.substring(0, 15)}...</p>
           <div className={styles.postFooter}>
             <div className={styles.authorInfo}>
               <img

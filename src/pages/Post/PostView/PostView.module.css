@@ -45,7 +45,7 @@
 }
 
 .post:hover .image {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .postContent {
