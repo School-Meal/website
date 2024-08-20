@@ -46,9 +46,14 @@ function TopNav({ isLoggedIn, setIsLoggedIn }) {
             </Button>
           </>
         ) : (
-          <Link to="/signin">
-            <Button style={{ width: "100%" }}>로그인</Button>
-          </Link>
+          <>
+            <h1 className={styles.navText}>
+              📱 스마트폰으로 이용 시 어플을 이용해주세요.
+            </h1>
+            <Link to="/signin">
+              <Button style={{ width: "100%" }}>로그인</Button>
+            </Link>
+          </>
         )}
       </div>
       <Modal
